@@ -29,17 +29,17 @@ generator2 = Generator().to(device)
 generator2.load_state_dict(torch.load(f"./results/{model2}/g-last.pth"))
 generator2.eval()
 
-# LPIPS 모델 초기화
+# Initialize LPIPS model
 lpips_model = lpips.LPIPS(net='alex').to(device)
 
-# LPIPS 계산 함수
+# LPIPS calculation function
 def calculate_lpips(pred, target):
     pred_np = pred.detach()
     target_np = target.detach()
     return lpips_model(pred_np, target_np).mean().item()
 
 x = Image.open(opt.image_path)
-transform = transforms.Compose([transforms.Resize((x.size[1]//4, x.size[0]//4), Image.BICUBIC),transforms.ToTensor()]) #이미지에 맞게 resize 지금 1/4
+transform = transforms.Compose([transforms.Resize((x.size[1]//4, x.size[0]//4), Image.BICUBIC),transforms.ToTensor()]) # Resize to match image, currently 1/4
 transform1 = transforms.Compose([transforms.Resize((x.size[1]//4, x.size[0]//4), Image.BICUBIC),transforms.ToTensor()])
 transform2 = transforms.Compose([transforms.Resize(((x.size[1]//4)*4, (x.size[0]//4)*4), Image.BICUBIC),transforms.ToTensor()])
 # Prepare input
