@@ -37,8 +37,8 @@ exp_name         = "pie"                # Experiment name.
 # ==============================================================================
 if mode == "train":
     # Configure dataset.
-    train_dir             = "../data/DIV2K_train_HR"          # The address of the training dataset.
-    valid_dir             = "../data/DIV2K_valid_HR"          # Verify the address of the dataset.
+    train_dir             = "./data/DIV2K_train_HR"          # The address of the training dataset.
+    valid_dir             = "./data/DIV2K_valid_HR"          # Verify the address of the dataset.
     image_size            = 128                         # High-resolution image size in the training dataset.
     batch_size            = 4                         # Data batch size.
 
@@ -98,6 +98,6 @@ if mode == "valid":
     model_path = f"results/pieonly/g-best.pth"
 
     # Test data address.
-    lr_dir     = f"../data/Set14/"
+    lr_dir     = f"./data/Set14/"
     sr_dir     = f"results/test/pieonly/"
     hr_dir     = f"data/x4bic/cg1GT/"
