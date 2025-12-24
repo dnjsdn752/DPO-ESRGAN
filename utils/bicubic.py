@@ -1,15 +1,15 @@
 import os
 from PIL import Image
 
-# 원본 이미지 폴더 경로
+# Original image folder path
 input_folder = '../data/BSD100'
-# 결과 이미지 저장 경로
+# Result image save path
 output_folder = 'results/test/pieonly/bicubic'
 
-# 저장 폴더가 없으면 생성
+# Create save folder if it doesn't exist
 os.makedirs(output_folder, exist_ok=True)
 
-# 처리할 확장자 리스트
+# List of extensions to process
 valid_exts = ['.png', '.jpg', '.jpeg', '.bmp']
 
 for filename in os.listdir(input_folder):
@@ -17,17 +17,17 @@ for filename in os.listdir(input_folder):
         input_path = os.path.join(input_folder, filename)
         output_path = os.path.join(output_folder, filename)
 
-        # 이미지 열기
+        # Open image
         img = Image.open(input_path).convert("RGB")
         w, h = img.size
 
-        # 1/4로 다운샘플링
+        # Downsample by 1/4
         img_lowres = img.resize((w // 4, h // 4), resample=Image.BICUBIC)
 
-        # 4배 업샘플링 (원래 크기)
+        # Upsample by 4x (original size)
         img_upsampled = img_lowres.resize((w, h), resample=Image.BICUBIC)
 
-        # 저장
+        # Save
         img_upsampled.save(output_path)
 
-print("완료!")
+print("completed!")

@@ -25,20 +25,20 @@ import lpips
 
 beta: float = 0.1
 label_smoothing: float = 0.0
-#epsilon = 1e-8  # 아주 작은 값
+#epsilon = 1e-8  
 os.makedirs(exp_dir1, exist_ok=True)
 os.makedirs(exp_dir2, exist_ok=True)
 
-# LPIPS 모델 초기화
+# LPIPS Model initialization
 lpips_model = lpips.LPIPS(net='alex').to(device)
-# 모델의 파라미터가 업데이트되지 않도록 설정
+# Prevent model parameters from being updated
 for param in lpips_model.parameters():
     param.requires_grad = False
 
-#pieapp 모델 초기화
+#pieapp model initialization
 pie_model = piq.PieAPP(reduction='none', stride=128, enable_grad=True)
 
-# LPIPS 계산 함수
+#LPIPS calculation function
 def calculate_lpips(pred, target):
     pred_np = pred.detach()
     target_np = target.detach()
@@ -132,23 +132,23 @@ def train_adversarial(train_dataloader, epoch) -> None:
         clamp_sr = torch.clamp(sr, 0, 1)
         
         
-        #batch 내부에 대하여 value model 통과
+        #Pass the value model inside the batch
         value_outputs = []
 
         for i in range(clamp_sr.size(0)):
-            # 현재 배치의 입력
-            current_input = clamp_sr[i].unsqueeze(0)  # (1, 3, 128, 128)으로 차원 변경
+            # Input for current batch
+            current_input = clamp_sr[i].unsqueeze(0)  # Reshape to (1, 3, 128, 128)
             hr_input = hr[i].unsqueeze(0)
             
             pieapp_loss = pie_model(hr_input.detach(), current_input)
             pie=abs(torch.mean(pieapp_loss))
-            pie_inverse = -torch.exp(pie) #지수함수를 통과하여 크게 만들어주기
+            pie_inverse = -pie 
             value_outputs.append(pie_inverse)
             
-            #lpips 를 이용할 때 
-            #lpips_value = pass_lpips(hr_input.detach(), current_input)  # LPIPS 모델 통과
-            #lpips_inverse = -torch.exp(lpips_value)
-            #value_outputs.append(lpips_inverse)  # 출력 값을 리스트에 추가
+            # When using LPIPS 
+            #lpips_value = pass_lpips(hr_input.detach(), current_input) 
+            #lpips_inverse = -lpips_value
+            #value_outputs.append(lpips_inverse)  # Add output value to list
             
 
         # Total generator loss
@@ -156,7 +156,7 @@ def train_adversarial(train_dataloader, epoch) -> None:
         max_value = max(value_outputs)
         min_value = min(value_outputs)
         #dpo loss
-        logits = min_value - (max_value.detach())  # 최종적으로 비선호 - 선호 형태 (max_value: -선호, min_value: -비선호)
+        logits = min_value - (max_value.detach())  # Finally: Rejected - Chosen form (max_value: -Chosen, min_value: -Rejected)
         loss_dpo = (
         -F.logsigmoid(beta * logits) * (1 - label_smoothing)
         - F.logsigmoid(-beta * logits) * label_smoothing
@@ -238,7 +238,7 @@ def validate(valid_dataloader, epoch, stage) -> float:
             psnr_value = 10 * torch.log10(1 / mse_loss).item()
 
             clamp_sr = torch.clamp(sr, 0, 1)
-            pieapp_loss: torch.Tensor = piq.PieAPP(reduction='none', stride=128)(hr.detach(), clamp_sr) #원본이미지와 비교하기 위해서 model통과한 결과도 denormalize ->pie결과가 모두동일...
+            pieapp_loss: torch.Tensor = piq.PieAPP(reduction='none', stride=128)(hr.detach(), clamp_sr) 
             pie=torch.Tensor.cpu(pieapp_loss)
             pie=pie.cuda()
             pie_value=abs(torch.mean(pie))

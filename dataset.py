@@ -40,7 +40,7 @@ def denormalize(tensors):
 
 def gen_denormalize(tensors):
     """ Denormalizes image tensors using mean and std """
-    # 입력 텐서를 복사하여 새로운 텐서 생성
+  
     denormalized_tensors = tensors.clone()
     
     for c in range(3):
@@ -93,8 +93,8 @@ class Denormalize(object):
         self.var = var
 
     def __call__(self, img):
-        # 정규화된 이미지에 대해 역 정규화 수행
-        # img는 C x H x W 형식의 numpy 배열이라고 가정
+        # Perform denormalization on the normalized image
+        # Assuming img is a numpy array of the form C x H x W
         d_img = (img * self.var) + self.mean
         return d_img
 
@@ -183,15 +183,15 @@ class BaseDataset(Dataset):
                 transforms.ToTensor()
             ])
         elif mode == "original_size_valid":
-            # 변환 정의
+          
             self.hr_transforms = transforms.Compose([
                 transforms.Lambda(lambda img: img.resize(((img.size[0] // 4)*4, (img.size[1] // 4)*4), Image.BICUBIC)),
-                transforms.ToTensor()  # 텐서로 변환
+                transforms.ToTensor()  
             ])
             self.lr_transforms = transforms.Compose([
                 transforms.ToPILImage(),
                 transforms.Lambda(lambda img: img.resize((img.size[0] // 4, img.size[1] // 4), Image.BICUBIC)),
-                transforms.ToTensor()  # 텐서로 변환
+                transforms.ToTensor()  
             ])
 
     def __getitem__(self, index) -> Tuple[Tensor, Tensor]:

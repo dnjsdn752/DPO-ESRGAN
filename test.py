@@ -50,10 +50,10 @@ dataloader = DataLoader(
     num_workers=opt.n_cpu,
 )
 
-# LPIPS 모델 초기화
+# LPIPS model initialization
 lpips_model = lpips.LPIPS(net='alex').to(device)
 
-# LPIPS 계산 함수
+# LPIPS calculation function
 def calculate_lpips(target, pred):
     pred_np = pred.detach()
     target_np = target.detach()
@@ -79,7 +79,7 @@ for i, (lr, hr) in enumerate(dataloader):
 
     #indicator
     clamp_sr = torch.clamp(sr, 0, 1)
-    pieapp_loss: torch.Tensor = piq.PieAPP(reduction='none', stride=clamp_sr.shape[2])(hr.detach(), clamp_sr) #원본이미지와 비교하기 위해서 model통과한 결과도 denormalize ->pie결과가 모두동일...
+    pieapp_loss: torch.Tensor = piq.PieAPP(reduction='none', stride=clamp_sr.shape[2])(hr.detach(), clamp_sr) 
     pie=torch.Tensor.cpu(pieapp_loss)
     pie=pie.cuda()
     pie=abs(torch.mean(pie))

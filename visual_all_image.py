@@ -9,7 +9,7 @@ from PIL import Image
 import piq
 import lpips
 
-# 이미지가 저장된 폴더 경로
+# Folder path where the image is saved
 datasetname = 'URban100'
 folder_path = f"../data/{datasetname}"
 
@@ -29,22 +29,21 @@ generator2 = Generator().to(device)
 generator2.load_state_dict(torch.load(f"./results/{model2}/g-last.pth"))
 generator2.eval()
 
-# LPIPS 모델 초기화
+# LPIPS model initialization
 lpips_model = lpips.LPIPS(net='alex').to(device)
 
-# LPIPS 계산 함수
+# LPIPS calculation function
 def calculate_lpips(pred, target):
     pred_np = pred.detach()
     target_np = target.detach()
     return lpips_model(pred_np, target_np).mean().item()
 
-#폴더안에 이미지 돌면서 전부 반복문
 for filename in os.listdir(folder_path):
     if filename.endswith(('.png', '.jpg', '.jpeg')):
-        image_path = os.path.join(folder_path, filename)  # 전체 경로 생성
+        image_path = os.path.join(folder_path, filename)  
         x = Image.open(image_path)
 
-        transform = transforms.Compose([transforms.Resize((x.size[1]//4, x.size[0]//4), Image.BICUBIC),transforms.ToTensor()]) #이미지에 맞게 resize 지금 1/4
+        transform = transforms.Compose([transforms.Resize((x.size[1]//4, x.size[0]//4), Image.BICUBIC),transforms.ToTensor()]) 
         transform1 = transforms.Compose([transforms.Resize((x.size[1]//4, x.size[0]//4), Image.BICUBIC),transforms.ToTensor()])
         transform2 = transforms.Compose([transforms.Resize(((x.size[1]//4)*4, (x.size[0]//4)*4), Image.BICUBIC),transforms.ToTensor()])
         # Prepare input

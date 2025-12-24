@@ -2,10 +2,10 @@ import os
 
 def rename_lr_to_hr(folder_path: str):
     """
-    folder_path 폴더 내 모든 파일 이름에서 'LR'을 'HR'로 변경합니다.
+    Change 'LR' to 'HR' in all filenames within folder_path folder.
     """
     for fname in os.listdir(folder_path):
-        # 파일명이 LR을 포함하는 경우에만 처리
+        # Process only if filename contains LR
         if "LR" in fname:
             src = os.path.join(folder_path, fname)
             new_fname = fname.replace("LR", "HR")
