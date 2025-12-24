@@ -2,19 +2,31 @@
 
 **Direct Preference Optimization for Super-Resolution (DPO-ESRGAN)**
 
-This repository contains the implementation of **DPO-ESRGAN**, a research project applying Direct Preference Optimization (DPO) to Single Image Super-Resolution (SISR). By leveraging preference data, this model aims to generate high-fidelity super-resolved images that align better with human perceptual preferences.
+[![Paper](https://img.shields.io/badge/Paper-Electronics-blue)](https://doi.org/10.3390/electronics14173357)
+[![DOI](https://img.shields.io/badge/DOI-10.3390%2Felectronics14173357-blue)](https://doi.org/10.3390/electronics14173357)
+
+This repository contains the official implementation of the paper:
+**"Applying Direct Preference Optimization to Super-Resolution"**  
+*Electronics 2025, 14(17), 3357*  
+[https://doi.org/10.3390/electronics14173357](https://doi.org/10.3390/electronics14173357)
+
+## Abstract
+Super-resolution (SR) is a long-standing task in the field of computer vision that aims to improve the quality and resolution of an image. ESRGAN is a representative generative adversarial network specialized to produce perceptually-convincing SR images. However, it often fails to recover local details and still produces blurry or unnatural visual artifacts, resulting in producing SR images that people do not prefer. To address this problem, we propose to adopt direct preference optimization (DPO), originally devised to fine-tune large language models based on human preferences. To this end, we develop a method for applying DPO to ESRGAN, and add a DPO loss for training the ESRGAN generator. Through ×4 SR experiments utilizing benchmark datasets, it is demonstrated that the proposed method can produce SR images with significantly higher perceptual quality and higher human preference than ESRGAN and other ESRGAN variants that modified the loss or network structure of ESRGAN. Specifically, when compared to ESRGAN, the proposed method achieved 0.27 lower PieAPP values, 0.34 lower NIQE values, and 0.17 lower PSNR values on average.
+
+**Keywords**: Image super-resolution, ESRGAN, direct preference optimization, PieAPP, LPIPS
 
 > **Note**: This code is derived from [Pie-ESRGAN-PyTorch](https://github.com/cyun-404/PieESRGAN) and adapted for DPO experiments.
 
 ---
 
 ## 📋 Table of Contents
-- [Prerequisites](#prerequisites)
-- [Dataset Preparation](#dataset-preparation)
-- [Training](#training)
-- [Testing & Evaluation](#testing--evaluation)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+- [Prerequisites](#prerequisites-)
+- [Dataset Preparation](#dataset-preparation-)
+- [Training](#training-)
+- [Testing & Evaluation](#testing--evaluation-)
+- [Citation](#citation-)
+- [License](#license-)
+- [Acknowledgements](#acknowledgements-)
 
 ---
 
@@ -124,6 +136,26 @@ The `test/` directory contains specialized scripts for various evaluation needs:
 - **`test/test_img.py`**: Calculates metrics (PSNR, SSIM, LPIPS, Pie) for all images in a target folder.
 - **`test/test_ssim.py`**: Specialized script specifically for calculating **SSIM** scores.
 - **`test/test_niqe.py`**: Specialized script specifically for calculating **NIQE** scores.
+
+---
+
+## Citation 📖
+
+If you find this project useful for your research, please cite our paper:
+
+```bibtex
+@article{electronics14173357,
+  title={Applying Direct Preference Optimization to Super-Resolution},
+  journal={Electronics},
+  volume={14},
+  year={2025},
+  number={17},
+  article-number={3357},
+  url={https://www.mdpi.com/2079-9292/14/17/3357},
+  issn={2079-9292},
+  doi={10.3390/electronics14173357}
+}
+```
 
 ---
 
