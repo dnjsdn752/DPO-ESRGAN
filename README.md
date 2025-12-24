@@ -3,7 +3,6 @@
 **Direct Preference Optimization for Super-Resolution (DPO-ESRGAN)**
 
 [![Paper](https://img.shields.io/badge/Paper-Electronics-blue)](https://doi.org/10.3390/electronics14173357)
-[![DOI](https://img.shields.io/badge/DOI-10.3390%2Felectronics14173357-blue)](https://doi.org/10.3390/electronics14173357)
 
 This repository contains the official implementation of the paper:
 **"Applying Direct Preference Optimization to Super-Resolution"**  
@@ -22,10 +21,11 @@ Super-resolution (SR) is a long-standing task in the field of computer vision th
 ## 📋 Table of Contents
 - [Prerequisites](#prerequisites-)
 - [Dataset Preparation](#dataset-preparation-)
-- [Training](#training-)
-- [Testing & Evaluation](#testing--evaluation-)
-- [Citation](#citation-)
-- [License](#license-)
+- [Training](#training)
+- [Testing & Evaluation](#testing--evaluation)
+- [Experimental Results](#experimental-results)
+- [Citation](#citation)
+- [License](#license)
 - [Acknowledgements](#acknowledgements-)
 
 ---
@@ -136,6 +136,22 @@ The `test/` directory contains specialized scripts for various evaluation needs:
 - **`test/test_img.py`**: Calculates metrics (PSNR, SSIM, LPIPS, Pie) for all images in a target folder.
 - **`test/test_ssim.py`**: Specialized script specifically for calculating **SSIM** scores.
 - **`test/test_niqe.py`**: Specialized script specifically for calculating **NIQE** scores.
+
+---
+
+## Experimental Results 📉
+
+### Quantitative Comparison
+Comparison of ESRGANs trained with different losses (PSNR, SSIM, LPIPS, PieAPP, NIQE).
+
+![Table 1: Qualitative Results](INSERT_PATH_TO_YOUR_TABLE_IMAGE_HERE)
+*(e.g., `assets/table_results.png`)*
+
+### Visual Comparison
+Visual comparison between SR images generated using different losses.
+
+![Figure 1: Visual Results](INSERT_PATH_TO_YOUR_FIGURE_IMAGE_HERE)
+*(e.g., `assets/visual_results.jpg`)*
 
 ---
 
