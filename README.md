@@ -14,8 +14,6 @@ Super-resolution (SR) is a long-standing task in the field of computer vision th
 
 **Keywords**: Image super-resolution, ESRGAN, direct preference optimization, PieAPP, LPIPS
 
-> **Note**: This code is derived from [Pie-ESRGAN-PyTorch](https://github.com/cyun-404/PieESRGAN) and adapted for DPO experiments.
-
 ---
 
 ## 📋 Table of Contents
