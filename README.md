@@ -140,14 +140,14 @@ The `test/` directory contains specialized scripts for various evaluation needs:
 ## Experimental Results 📉
 
 ### Quantitative Comparison
-[cite_start]Comparison of ESRGANs trained with different losses (PSNR, SSIM, LPIPS, PieAPP, NIQE). [cite: 387, 394]
+Comparison of ESRGANs trained with different losses (PSNR, SSIM, LPIPS, PieAPP, NIQE).
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/04c2d234-c2f7-4a29-95a6-f459462cee60" width="80%" alt="Table 1: Qualitative Results">
 </p>
 
 ### Visual Comparison
-[cite_start]Visual comparison between SR images generated using different losses. [cite: 440, 441]
+Visual comparison between SR images generated using different losses.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/53c31149-1696-4395-806c-e506e3ef8902" width="80%" alt="Figure 1: Visual Results">
