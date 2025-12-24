@@ -18,7 +18,7 @@ This repository contains the implementation of **DPO-ESRGAN**, a research projec
 
 ---
 
-## 🛠 Prerequisites
+## Prerequisites 🛠
 
 ### Installation
 1. Clone this repository:
@@ -34,7 +34,7 @@ This repository contains the implementation of **DPO-ESRGAN**, a research projec
 
 ---
 
-## 📂 Dataset Preparation
+## Dataset Preparation 📂
 
 ### Directory Structure
 Place your High-Resolution (HR) training and validation datasets in the `data` directory.
@@ -50,7 +50,7 @@ data/
 
 ---
 
-## 🚀 Training
+## Training 🚀
 
 Training DPO-ESRGAN consists of two main stages. Since ESRGAN-based models are difficult to train from scratch, we follow a pre-training strategy.
 
@@ -97,33 +97,40 @@ python SR_DPO_Only_train.py
 
 ---
 
-## 📊 Testing & Evaluation
+## Testing & Evaluation 📊
 
-Evaluate the trained models using the scripts provided in the `test/` directory.
+We evaluate the performance using several metrics. The arrows indicate whether higher or lower values are better:
+- **PSNR** ↑ (Peak Signal-to-Noise Ratio)
+- **SSIM** ↑ (Structural Similarity)
+- **LPIPS** ↓ (Learned Perceptual Image Patch Similarity)
+- **PieAPP** ↓ (Perceptual Image-Error Assessment through Pairwise Preference)
+- **NIQE** ↓ (Naturalness Image Quality Evaluator)
 
-### Benchmark Evaluation
-Run a comprehensive test across multiple datasets (Set5, Set14, BSD100, Urban100) to calculate PSNR, SSIM, LPIPS, and PieAPP scores.
+### Quick Test
+**`test.py`**: A simple script to evaluate performance on a single dataset.
 ```bash
-python test/test_all.py
+# Evaluate on default dataset (Urban100) or specify one
+python test.py --dataset_name Set5
 ```
 
-### Single Image Inference
-Test the model on a specific image to visualize the super-resolution result.
-```bash
-python test/test_on_image.py --image_path "data/Set5/baby.png"
-```
+### Detailed Evaluation Scripts
+The `test/` directory contains specialized scripts for various evaluation needs:
 
-### Metric Calculation
-- **`test/test_ssim.py`**: Measure SSIM for a dataset.
-- **`test/test_niqe.py`**: Measure NIQE scores.
-- **`test/test_img.py`**: Comprehensive metric calculation for a folder of images.
+- **`test/test_all.py`**: Runs a comprehensive benchmark on all major datasets (Set5, Set14, BSD100, Urban100) to measure overall performance.
+- **`test/test_on_image.py`**: Performs inference and metric calculation on a **single specific image file** to visualize results.
+  ```bash
+  python test/test_on_image.py --image_path "data/Set5/baby.png"
+  ```
+- **`test/test_img.py`**: Calculates metrics (PSNR, SSIM, LPIPS, Pie) for all images in a target folder.
+- **`test/test_ssim.py`**: Specialized script specifically for calculating **SSIM** scores.
+- **`test/test_niqe.py`**: Specialized script specifically for calculating **NIQE** scores.
 
 ---
 
-## 📝 License
+## License 📝
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
-## 🙌 Acknowledgements
+## Acknowledgements 🙌
 
 This code is built upon the excellent work of [Pie-ESRGAN-PyTorch](https://github.com/cyun-404/PieESRGAN). We thank the authors for their open-source contribution.
