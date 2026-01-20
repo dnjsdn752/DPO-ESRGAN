@@ -1,11 +1,11 @@
 # DPO-ESRGAN
 
-**Direct Preference Optimization for Super-Resolution (DPO-ESRGAN)**
+**DPO-ESRGAN: Perceptually Enhanced Super-Resolution Using Direct Preference Optimization**
 
 [![Paper](https://img.shields.io/badge/Paper-Electronics-blue)](https://doi.org/10.3390/electronics14173357)
 
 This repository contains the official implementation of the paper:
-**"Applying Direct Preference Optimization to Super-Resolution"**  
+**"DPO-ESRGAN: Perceptually Enhanced Super-Resolution Using Direct Preference Optimization"**  
 *Electronics 2025, 14(17), 3357*  
 [https://doi.org/10.3390/electronics14173357](https://doi.org/10.3390/electronics14173357)
 
