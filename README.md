@@ -23,7 +23,6 @@ Super-resolution (SR) is a long-standing task in the field of computer vision th
 - [Testing & Evaluation](#testing--evaluation)
 - [Experimental Results](#experimental-results)
 - [Citation](#citation)
-- [License](#license)
 - [Acknowledgements](#acknowledgements-)
 
 ---
@@ -174,10 +173,6 @@ If you find this project useful for your research, please cite our paper:
 ```
 
 ---
-
-## License 📝
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgements 🙌
 

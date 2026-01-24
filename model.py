@@ -1,14 +1,3 @@
-# Copyright 2021 Dakewe Biotech Corporation. All Rights Reserved.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# Original code available at: https://github.com/cyun-404/PieESRGAN?tab=readme-ov-file
-#
-# Modified by Wonwoo Yun in 2025 for research purposes.
-# This modified version is licensed under the MIT License.
-# ==============================================================================
-
-# ==============================================================================
-# File description: Realize the model definition function.
-# ==============================================================================
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
