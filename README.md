@@ -149,7 +149,7 @@ Comparison of ESRGANs trained with different losses (PSNR, SSIM, LPIPS, PieAPP, 
 Visual comparison between SR images generated using different losses.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/53c31149-1696-4395-806c-e506e3ef8902" width="80%" alt="Figure 1: Visual Results">
+  <img width="80%" alt="Figure 1: Visual Results"src="https://github.com/user-attachments/assets/7db4f777-3f03-426f-ae07-00f2f3143b99" />
 </p>
 
 ---
