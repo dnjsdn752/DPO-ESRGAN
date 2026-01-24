@@ -142,7 +142,7 @@ The `test/` directory contains specialized scripts for various evaluation needs:
 Comparison of ESRGANs trained with different losses (PSNR, SSIM, LPIPS, PieAPP, NIQE).
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/04c2d234-c2f7-4a29-95a6-f459462cee60" width="80%" alt="Table 1: Qualitative Results">
+   <img width="80%" alt="Table 1: Qualitative Results" src="https://github.com/user-attachments/assets/f5bb4081-9da1-4d12-a49a-0b1c43afb43b" />
 </p>
 
 ### Visual Comparison
