@@ -1,3 +1,9 @@
+# Copyright 2021 Dakewe Biotech Corporation. All Rights Reserved.
+# Licensed under the Apache License, Version 2.0 (the "License");
+
+# Modified by Wonwoo Yun in 2025 for research purposes.
+
+# ==============================================================================
 import os
 
 import torch
